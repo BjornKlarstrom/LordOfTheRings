@@ -10,6 +10,16 @@ public class Gold : MonoBehaviour
     public int goldAmount = 0;
     public Text goldAmountText;
 
+    private void Start()
+    {
+        this.goldAmount = PlayerPrefs.GetInt("SavedGold", 0);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("SavedGold", this.goldAmount);
+    }
+
     private void Update() {
         this.goldAmountText.text = this.goldAmount.ToString("Gold: 0");
 
@@ -17,6 +27,8 @@ public class Gold : MonoBehaviour
             ProduceGold();
         }
     }
+    
+    
 
     public void ProduceGold()
     {
