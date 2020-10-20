@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -11,9 +8,10 @@ public class Gold : MonoBehaviour
     [SerializeField] private int goldValue = 5;
     public Text goldAmountText;
 
-    private int _goldTotal = 0;
+    public int goldPressesOwned = 0;
+    private int goldpressCost = 100;
 
-    // Property for _goldTotal
+    // Property for total amount of gold and Goldpresses
     public int GoldTotal
     {
         get => PlayerPrefs.GetInt("SavedGoldTotal",0);
@@ -22,6 +20,12 @@ public class Gold : MonoBehaviour
             PlayerPrefs.SetInt("SavedGoldTotal", value);
             UpdateGoldAmountText();
         }
+    }
+
+    public int GoldPressesOwned
+    {
+        get => goldPressesOwned;
+        set => goldPressesOwned = value;
     }
 
 
@@ -39,14 +43,21 @@ public class Gold : MonoBehaviour
     private void Update() 
     {
         
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            ProduceGold();
-        }
     }
 
     public void ProduceGold()
     {
         this.GoldTotal += this.goldValue;
+    }
+
+    public void ByGoldpress()
+    {
+        if (GoldTotal < goldpressCost)
+        {
+            Debug.Log("Not enough gold for this! ");
+            return;
+        }
+        GoldPressesOwned++;
+        Debug.Log("You bought a goldpress!");
     }
 }
