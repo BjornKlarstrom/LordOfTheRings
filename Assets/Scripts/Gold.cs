@@ -7,24 +7,23 @@ using UnityEngine.UI;
 
 public class Gold : MonoBehaviour
 {
-    public int goldAmount = 0;
+    public int goldTotal = 0;
     public Text goldAmountText;
 
     [SerializeField] int goldValue = 5;
 
     private void Start()
     {
-        this.goldAmount = PlayerPrefs.GetInt("SavedGold", 0);
+        this.goldTotal = PlayerPrefs.GetInt("SavedGoldTotal", 0);
     }
 
     private void OnDestroy()
     {
-        PlayerPrefs.SetInt("SavedGold", this.goldAmount);
+        PlayerPrefs.SetInt("SavedGoldTotal", this.goldTotal);
     }
 
     private void Update() {
-        this.goldAmountText.text = this.goldAmount.ToString("Gold: 0");
-
+        
         if (Input.GetMouseButtonDown(0)) {
             ProduceGold();
         }
@@ -32,6 +31,7 @@ public class Gold : MonoBehaviour
 
     public void ProduceGold()
     {
-        this.goldAmount += goldValue;
+        this.goldTotal += goldValue;
+        this.goldAmountText.text = this.goldTotal.ToString();
     }
 }
