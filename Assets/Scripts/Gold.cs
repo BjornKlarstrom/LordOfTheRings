@@ -16,25 +16,24 @@ public class Gold : MonoBehaviour
     // Property for _goldTotal
     public int GoldTotal
     {
-        get => _goldTotal;
+        get => PlayerPrefs.GetInt("SavedGoldTotal",0);
         set
         {
-            _goldTotal = value;
-            this.goldAmountText.text = value.ToString();
+            PlayerPrefs.SetInt("SavedGoldTotal", value);
+            UpdateGoldAmountText();
         }
     }
 
 
     // Methods
-    private void Start()
+    void UpdateGoldAmountText()
     {
-        this.GoldTotal = PlayerPrefs.GetInt("SavedGoldTotal", 0);
-        this.goldAmountText.text = this.GoldTotal.ToString();
+        this.goldAmountText.text = this.GoldTotal.ToString("Gold: 0");
     }
 
-    private void OnDestroy()
+    private void Start()
     {
-        PlayerPrefs.SetInt("SavedGoldTotal", this._goldTotal);
+        UpdateGoldAmountText();
     }
 
     private void Update() 
