@@ -10,6 +10,8 @@ public class Gold : MonoBehaviour
     public int goldAmount = 0;
     public Text goldAmountText;
 
+    [SerializeField] int goldValue = 5;
+
     private void Start()
     {
         this.goldAmount = PlayerPrefs.GetInt("SavedGold", 0);
@@ -27,11 +29,9 @@ public class Gold : MonoBehaviour
             ProduceGold();
         }
     }
-    
-    
 
     public void ProduceGold()
     {
-        this.goldAmount += 5;
+        this.goldAmount += goldValue;
     }
 }
