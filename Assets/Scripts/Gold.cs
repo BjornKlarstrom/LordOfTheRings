@@ -10,8 +10,12 @@ public class Gold : MonoBehaviour
     public int goldAmount = 0;
     public Text goldAmountText;
 
-    private void Update()
-    {
+    private void Update() {
         this.goldAmountText.text = this.goldAmount.ToString("Gold: 0");
+    }
+
+    public void ProduceGold()
+    {
+        this.goldAmount += 5;
     }
 }
