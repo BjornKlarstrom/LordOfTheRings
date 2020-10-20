@@ -61,6 +61,7 @@ public class Gold : MonoBehaviour
         }
         else
         {
+            GoldTotal -= goldpressCost;
             GoldPressesOwned++;
             StartCoroutine(PressGoldAndWait(1f));
             Debug.Log("You bought a goldpress!");   
