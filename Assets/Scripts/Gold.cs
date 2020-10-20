@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -57,7 +59,21 @@ public class Gold : MonoBehaviour
             Debug.Log("Not enough gold for this! ");
             return;
         }
-        GoldPressesOwned++;
-        Debug.Log("You bought a goldpress!");
+        else
+        {
+            GoldPressesOwned++;
+            StartCoroutine(PressGoldAndWait(1f));
+            Debug.Log("You bought a goldpress!");   
+        }
+    }
+
+    IEnumerator PressGoldAndWait(float waitTime)
+    {
+        while (true)
+        {
+            GoldTotal += 1;
+            Debug.Log("Goldpress pressed 1 gold!");
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 }
