@@ -389,15 +389,15 @@ MonoBehaviour:
     productionTime: 1
   - name: DoubleGoldpress
     productionAmount: 1
-    costs: 100
+    costs: 300
     productionTime: 1
   - name: GoldpressFountain
     productionAmount: 1
-    costs: 100
+    costs: 700
     productionTime: 1
   - name: GoldpressFactoty
     productionAmount: 1
-    costs: 100
+    costs: 2000
     productionTime: 1
   goldProductionUnitParent: {fileID: 1430834840}
   goldProductionUnitPrefab: {fileID: 5180716211921746249, guid: 8686297164f78406ca12fd2a46702259, type: 3}
