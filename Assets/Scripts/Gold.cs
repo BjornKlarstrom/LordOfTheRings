@@ -1,82 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-public class Gold : MonoBehaviour
-{
-    // Fields
-    [SerializeField] private int goldValue = 5;
+public class Gold : MonoBehaviour {
+    public int goldAmountPerClick = 5;
     public Text goldAmountText;
-    public Text GoldPressCostText;
 
-    public int goldPressesOwned = 0;
-    private int goldpressCost = 100;
-
-    // Property for total amount of gold and Goldpresses
-    public int GoldTotal
-    {
-        get => PlayerPrefs.GetInt("SavedGoldTotal",0);
-        set
-        {
-            PlayerPrefs.SetInt("SavedGoldTotal", value);
-            UpdateGoldAmountText();
+    public int GoldTotal {
+        get => PlayerPrefs.GetInt("Gold", 1);
+        set {
+            PlayerPrefs.SetInt("Gold", value);
+            UpdateGoldAmountLabel();
         }
     }
 
-    public int GoldPressesOwned
-    {
-        get => goldPressesOwned;
-        set => goldPressesOwned = value;
+    void UpdateGoldAmountLabel() {
+        this.goldAmountText.text = this.GoldTotal.ToString("0 Gold");
     }
 
-
-    // Methods
-    void UpdateGoldAmountText()
-    {
-        this.goldAmountText.text = this.GoldTotal.ToString("Gold: 0");
+    void Start() {
+        UpdateGoldAmountLabel();
     }
-
-    private void Start()
-    {
-        UpdateGoldAmountText();
-        this.GoldPressCostText.text = goldpressCost.ToString("By Goldpress\n Cost: 000");
-    }
-
-    private void Update() 
-    {
-        
-    }
-
-    public void ProduceGold()
-    {
-        this.GoldTotal += this.goldValue;
-    }
-
-    public void ByGoldpress()
-    {
-        if (GoldTotal < goldpressCost)
-        {
-            Debug.Log("Not enough gold for this! ");
-            return;
-        }
-        else
-        {
-            GoldTotal -= goldpressCost;
-            GoldPressesOwned++;
-            StartCoroutine(PressGoldAndWait(1f));
-            Debug.Log("You bought a goldpress!");   
+	
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            ProduceGold();
         }
     }
 
-    IEnumerator PressGoldAndWait(float waitTime)
-    {
-        while (true)
-        {
-            GoldTotal += 1;
-            Debug.Log("Goldpress pressed 1 gold!");
-            yield return new WaitForSeconds(waitTime);
-        }
+    public void ProduceGold() {
+        this.GoldTotal += this.goldAmountPerClick; 
     }
 }
