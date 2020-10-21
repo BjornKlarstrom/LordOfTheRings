@@ -9,6 +9,7 @@ public class Gold : MonoBehaviour
     // Fields
     [SerializeField] private int goldValue = 5;
     public Text goldAmountText;
+    public Text GoldPressCostText;
 
     public int goldPressesOwned = 0;
     private int goldpressCost = 100;
@@ -40,6 +41,7 @@ public class Gold : MonoBehaviour
     private void Start()
     {
         UpdateGoldAmountText();
+        this.GoldPressCostText.text = goldpressCost.ToString("By Goldpress\n Cost: 000");
     }
 
     private void Update() 

@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 571163995}
   - component: {fileID: 571163994}
   m_Layer: 5
-  m_Name: LabelText
+  m_Name: ByGoldpressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,8 +240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000035048, y: 0.000017166}
-  m_SizeDelta: {x: 269.16626, y: 60.551163}
+  m_AnchoredPosition: {x: 0.00000095367, y: -0.034821}
+  m_SizeDelta: {x: 289.49158, y: 204.11414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571163994
 MonoBehaviour:
@@ -276,7 +276,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: By Goldpress
+  m_Text: 'By Goldpres
+
+    Cost: 100'
 --- !u!222 &571163995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -422,8 +424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -185, y: 179}
-  m_SizeDelta: {x: 269.16626, y: -458.4488}
+  m_AnchoredPosition: {x: -184.3, y: 158.7}
+  m_SizeDelta: {x: 270.52124, y: -417.79807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326774378
 MonoBehaviour:
@@ -549,6 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldValue: 5
   goldAmountText: {fileID: 1959293549}
+  GoldPressCostText: {fileID: 571163994}
   goldPressesOwned: 0
 --- !u!4 &1488488062
 Transform:
@@ -774,7 +777,7 @@ GameObject:
   - component: {fileID: 1900920354}
   - component: {fileID: 1900920353}
   m_Layer: 5
-  m_Name: LabelText
+  m_Name: ProduceGoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
