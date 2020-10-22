@@ -6,8 +6,12 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	[Ser]float timePassed;
 	private Gold gold;
+=======
+	float timePassed;
+>>>>>>> parent of 4fd6878... adds color green red to purchase button
 =======
 	float timePassed;
 >>>>>>> parent of 4fd6878... adds color green red to purchase button
@@ -41,6 +45,7 @@ public class GoldProductionUnitScript : MonoBehaviour {
 			this.timePassed -= this.goldProductionUnit.productionTime; 
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		UpdatePuschaseTextColor();
 	}
@@ -57,6 +62,8 @@ public class GoldProductionUnitScript : MonoBehaviour {
 			Debug.Log("false");
 			this.purchaseButtonLabel.color = Color.green;
 		}
+=======
+>>>>>>> parent of 4fd6878... adds color green red to purchase button
 =======
 >>>>>>> parent of 4fd6878... adds color green red to purchase button
 	}
