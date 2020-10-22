@@ -13,21 +13,21 @@ public class Gold : MonoBehaviour {
 		}
 	}
 
-	void UpdateGoldAmountLabel() {
+	private void UpdateGoldAmountLabel() {
 		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
 	}
 
-	void Start() {
+	private void Start() {
 		UpdateGoldAmountLabel();
 	}
 	
-	void Update() {
+	private void Update() {
 		if (Input.GetMouseButtonDown(0)) {
 			ProduceGold();
 		}
 	}
 
-	public void ProduceGold() {
+	private void ProduceGold() {
 		this.GoldAmount += this.goldAmountPerClick; 
 	}
 }

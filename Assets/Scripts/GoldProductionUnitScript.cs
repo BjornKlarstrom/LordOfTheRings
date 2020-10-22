@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,8 @@ public class GoldProductionUnitScript : MonoBehaviour {
     public GoldProductionUnit goldProductionUnit;
     public Text goldAmountText;
     public Text purchaseButtonLabel;
+    public Text producedGoldText;
+
     private Gold gold;
     float elapsedTime;
 
@@ -31,8 +34,9 @@ public class GoldProductionUnitScript : MonoBehaviour {
     private void Update()
     {
         Timer();
-        ProductionReady();
+        ProductionDone();
         UpdatePurchaseColor();
+        
     }
 
     private void Timer()
@@ -40,12 +44,18 @@ public class GoldProductionUnitScript : MonoBehaviour {
         this.elapsedTime += Time.deltaTime;
     }
 
-    private void ProductionReady()
+    private void ProductionDone()
     {
+
         if (this.elapsedTime >= this.goldProductionUnit.productionTime) 
         {
             ProduceGold();
             this.elapsedTime -= this.goldProductionUnit.productionTime;
+            
+            this.producedGoldText.text = (this.goldProductionUnit.productionAmount * this.GoldPressAmount).ToString();
+            var transformPosition = this.producedGoldText.transform.position;
+            transformPosition.y += 0.01f;
+            Debug.Log(transformPosition.y);
         }
     }
 
@@ -74,9 +84,10 @@ public class GoldProductionUnitScript : MonoBehaviour {
 
     public void BuyGoldPress() {
         var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount >= this.goldProductionUnit.costs) {
-            gold.GoldAmount -= this.goldProductionUnit.costs;
+        if (gold.GoldAmount >= this.goldProductionUnit.costs) 
+        {
             this.GoldPressAmount++;
+            gold.GoldAmount -= this.goldProductionUnit.costs;
         }
     }
 }
