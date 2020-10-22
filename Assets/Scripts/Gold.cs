@@ -17,8 +17,7 @@ public class Gold : MonoBehaviour {
         this.goldAmountText.text = this.GoldTotal.ToString("0 Gold");
     }
 
-    void Awake() {
-        PlayerPrefs.GetInt("GoldTotal", 0);
+    void Start() {
         UpdateGoldAmountLabel();
     }
 	
@@ -30,9 +29,5 @@ public class Gold : MonoBehaviour {
 
     public void ProduceGold() {
         this.GoldTotal += this.goldAmountPerClick; 
-    }
-
-    void OnApplicationQuit() {
-        PlayerPrefs.SetInt("GoldTotal", GoldTotal);
     }
 }

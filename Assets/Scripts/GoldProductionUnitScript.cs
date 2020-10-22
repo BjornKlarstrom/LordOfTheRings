@@ -5,7 +5,7 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	public GoldProductionUnit goldProductionUnit;
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
-	float timePassed;
+	[Ser]float timePassed;
 	private Gold gold;
 
 	public void SetUp(GoldProductionUnit goldProductionUnit) {
@@ -15,9 +15,9 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	}
 	
 	public int GoldpressTotal {
-		get => GoldpressTotal;
+		get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
 		set {
-			GoldpressTotal = value;
+			PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
 			UpdateGoldPressAmountLabel();
 		}
 	}
