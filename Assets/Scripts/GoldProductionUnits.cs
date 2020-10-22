@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GoldProductionUnits : MonoBehaviour {
 
@@ -7,10 +7,11 @@ public class GoldProductionUnits : MonoBehaviour {
     public Transform goldProductionUnitParent;
     public GameObject goldProductionUnitPrefab;
 
-    void Start() {
-        foreach (var productionUnit in this.goldProductionUnits) {
+    void Start()
+    {
+        foreach (var unit in this.goldProductionUnits) {
             var instance = Instantiate(this.goldProductionUnitPrefab, this.goldProductionUnitParent);
-            instance.GetComponent<GoldProductionUnitScript>().SetUp(productionUnit);
+            instance.GetComponent<GoldProductionUnitScript>().SetUp(unit);
         }
     }
 }
