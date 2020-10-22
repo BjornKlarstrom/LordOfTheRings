@@ -382,23 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ec9ab111464f5aa09a22eebb23a02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProductionUnits:
-  - name: Goldpress
-    productionAmount: 1
-    costs: 100
-    productionTime: 1
-  - name: DoubleGoldpress
-    productionAmount: 1
-    costs: 100
-    productionTime: 1
-  - name: GoldpressFountain
-    productionAmount: 1
-    costs: 100
-    productionTime: 1
-  - name: GoldpressFactoty
-    productionAmount: 1
-    costs: 100
-    productionTime: 1
+  goldProductionUnits: []
   goldProductionUnitParent: {fileID: 1430834840}
   goldProductionUnitPrefab: {fileID: 5180716211921746249, guid: 8686297164f78406ca12fd2a46702259, type: 3}
 --- !u!1 &1488488060
@@ -431,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldAmountPerClick: 5
-  goldAmountText: {fileID: 1959293549}
+  goldAmountText: {fileID: 0}
 --- !u!4 &1488488062
 Transform:
   m_ObjectHideFlags: 0

@@ -2,82 +2,51 @@
 using UnityEngine.UI;
 
 public class GoldProductionUnitScript : MonoBehaviour {
-	public GoldProductionUnit goldProductionUnit;
-	public Text goldAmountText;
-	public Text purchaseButtonLabel;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	[Ser]float timePassed;
-	private Gold gold;
-=======
-	float timePassed;
->>>>>>> parent of 4fd6878... adds color green red to purchase button
-=======
-	float timePassed;
->>>>>>> parent of 4fd6878... adds color green red to purchase button
+    public GoldProductionUnit goldProductionUnit;
+    public Text goldAmountText;
+    public Text purchaseButtonLabel;
+    float elapsedTime;
 
-	public void SetUp(GoldProductionUnit goldProductionUnit) {
-		this.goldProductionUnit = goldProductionUnit;
-		this.gameObject.name = goldProductionUnit.name;
-		this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name}";
-	}
+    public void SetUp(GoldProductionUnit goldProductionUnit) {
+        this.goldProductionUnit = goldProductionUnit;
+        this.gameObject.name = goldProductionUnit.name;
+        this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name}";
+    }
 	
-	public int GoldpressTotal {
-		get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
-		set {
-			PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
-			UpdateGoldPressAmountLabel();
-		}
-	}
+    public int GoldPressAmount {
+        get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
+        set {
+            PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
+            UpdateGoldPressAmountLabel();
+        }
+    }
 
-	void UpdateGoldPressAmountLabel() {
-		this.goldAmountText.text = this.GoldpressTotal.ToString($"0 {this.goldProductionUnit.name}");
-	}
+    void UpdateGoldPressAmountLabel() {
+        this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionUnit.name}");
+    }
 
-	void Start() {
-		UpdateGoldPressAmountLabel();
-	}
+    void Start() {
+        UpdateGoldPressAmountLabel();
+    }
 	
-	void Update() {
-		this.timePassed += Time.deltaTime;
-		if (this.timePassed >= this.goldProductionUnit.productionTime) {
-			ProduceGold();
-			this.timePassed -= this.goldProductionUnit.productionTime; 
-		}
-<<<<<<< HEAD
-<<<<<<< HEAD
+    void Update() {
+        this.elapsedTime += Time.deltaTime;
+        if (this.elapsedTime >= this.goldProductionUnit.productionTime) {
+            ProduceGold();
+            this.elapsedTime -= this.goldProductionUnit.productionTime;
+        }
+    }
 
-		UpdatePuschaseTextColor();
-	}
+    void ProduceGold() {
+        var gold = FindObjectOfType<Gold>();
+        gold.GoldAmount += this.goldProductionUnit.productionAmount * this.GoldPressAmount;
+    }
 
-	void UpdatePuschaseTextColor()
-	{
-		if (gold.GoldTotal < goldProductionUnit.costs)
-		{
-			Debug.Log("true");
-			this.purchaseButtonLabel.color = Color.red;
-		}
-		else
-		{
-			Debug.Log("false");
-			this.purchaseButtonLabel.color = Color.green;
-		}
-=======
->>>>>>> parent of 4fd6878... adds color green red to purchase button
-=======
->>>>>>> parent of 4fd6878... adds color green red to purchase button
-	}
-
-	void ProduceGold() {
-		var gold = FindObjectOfType<Gold>();
-		gold.GoldTotal += this.goldProductionUnit.productionAmount * this.GoldpressTotal;
-	}
-
-	public void BuyGoldPress() {
-		var gold = FindObjectOfType<Gold>();
-		if (gold.GoldTotal >= this.goldProductionUnit.costs) {
-			gold.GoldTotal -= this.goldProductionUnit.costs;
-			this.GoldpressTotal += 1;
-		}
-	}
+    public void BuyGoldPress() {
+        var gold = FindObjectOfType<Gold>();
+        if (gold.GoldAmount >= this.goldProductionUnit.costs) {
+            gold.GoldAmount -= this.goldProductionUnit.costs;
+            this.GoldPressAmount += 1;
+        }
+    }
 }

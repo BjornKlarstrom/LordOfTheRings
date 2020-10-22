@@ -2,32 +2,32 @@
 using UnityEngine.UI;
 
 public class Gold : MonoBehaviour {
-    public int goldAmountPerClick = 5;
-    public Text goldAmountText;
+	public int goldAmountPerClick = 5;
+	public Text goldAmountText;
 
-    public int GoldTotal {
-        get => GoldTotal;
-        set {
-            GoldTotal = value;
-            UpdateGoldAmountLabel();
-        }
-    }
+	public int GoldAmount {
+		get => PlayerPrefs.GetInt("Gold", 1);
+		set {
+			PlayerPrefs.SetInt("Gold", value);
+			UpdateGoldAmountLabel();
+		}
+	}
 
-    void UpdateGoldAmountLabel() {
-        this.goldAmountText.text = this.GoldTotal.ToString("0 Gold");
-    }
+	void UpdateGoldAmountLabel() {
+		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
+	}
 
-    void Start() {
-        UpdateGoldAmountLabel();
-    }
+	void Start() {
+		UpdateGoldAmountLabel();
+	}
 	
-    void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            ProduceGold();
-        }
-    }
+	void Update() {
+		if (Input.GetMouseButtonDown(0)) {
+			ProduceGold();
+		}
+	}
 
-    public void ProduceGold() {
-        this.GoldTotal += this.goldAmountPerClick; 
-    }
+	public void ProduceGold() {
+		this.GoldAmount += this.goldAmountPerClick; 
+	}
 }
