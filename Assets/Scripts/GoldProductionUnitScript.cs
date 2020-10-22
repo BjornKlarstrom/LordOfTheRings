@@ -14,16 +14,16 @@ public class GoldProductionUnitScript : MonoBehaviour {
 		this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name} {goldProductionUnit.costs}";
 	}
 	
-	public int GoldPressTotal {
-		get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
+	public int GoldpressTotal {
+		get => GoldpressTotal;
 		set {
-			PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
+			GoldpressTotal = value;
 			UpdateGoldPressAmountLabel();
 		}
 	}
 
 	void UpdateGoldPressAmountLabel() {
-		this.goldAmountText.text = this.GoldPressTotal.ToString($"0 {this.goldProductionUnit.name}");
+		this.goldAmountText.text = this.GoldpressTotal.ToString($"0 {this.goldProductionUnit.name}");
 	}
 
 	void Start() {
@@ -38,10 +38,10 @@ public class GoldProductionUnitScript : MonoBehaviour {
 			this.timePassed -= this.goldProductionUnit.productionTime; 
 		}
 
-		UpdatePuschaseColor();
+		UpdatePuschaseTextColor();
 	}
 
-	void UpdatePuschaseColor()
+	void UpdatePuschaseTextColor()
 	{
 		if (gold.GoldTotal < goldProductionUnit.costs)
 		{
@@ -57,14 +57,14 @@ public class GoldProductionUnitScript : MonoBehaviour {
 
 	void ProduceGold() {
 		var gold = FindObjectOfType<Gold>();
-		gold.GoldTotal += this.goldProductionUnit.productionAmount * this.GoldPressTotal;
+		gold.GoldTotal += this.goldProductionUnit.productionAmount * this.GoldpressTotal;
 	}
 
 	public void BuyGoldPress() {
 		
 		if (gold.GoldTotal >= this.goldProductionUnit.costs) {
 			gold.GoldTotal -= this.goldProductionUnit.costs;
-			this.GoldPressTotal += 1;
+			this.GoldpressTotal += 1;
 		}
 	}
 }
