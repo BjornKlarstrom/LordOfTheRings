@@ -5,13 +5,17 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	public GoldProductionUnit goldProductionUnit;
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
+<<<<<<< HEAD
 	[Ser]float timePassed;
 	private Gold gold;
+=======
+	float timePassed;
+>>>>>>> parent of 4fd6878... adds color green red to purchase button
 
 	public void SetUp(GoldProductionUnit goldProductionUnit) {
 		this.goldProductionUnit = goldProductionUnit;
 		this.gameObject.name = goldProductionUnit.name;
-		this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name} {goldProductionUnit.costs}";
+		this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name}";
 	}
 	
 	public int GoldpressTotal {
@@ -27,7 +31,6 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	}
 
 	void Start() {
-		gold = FindObjectOfType<Gold>();
 		UpdateGoldPressAmountLabel();
 	}
 	
@@ -37,6 +40,7 @@ public class GoldProductionUnitScript : MonoBehaviour {
 			ProduceGold();
 			this.timePassed -= this.goldProductionUnit.productionTime; 
 		}
+<<<<<<< HEAD
 
 		UpdatePuschaseTextColor();
 	}
@@ -53,6 +57,8 @@ public class GoldProductionUnitScript : MonoBehaviour {
 			Debug.Log("false");
 			this.purchaseButtonLabel.color = Color.green;
 		}
+=======
+>>>>>>> parent of 4fd6878... adds color green red to purchase button
 	}
 
 	void ProduceGold() {
@@ -61,7 +67,7 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	}
 
 	public void BuyGoldPress() {
-		
+		var gold = FindObjectOfType<Gold>();
 		if (gold.GoldTotal >= this.goldProductionUnit.costs) {
 			gold.GoldTotal -= this.goldProductionUnit.costs;
 			this.GoldpressTotal += 1;
