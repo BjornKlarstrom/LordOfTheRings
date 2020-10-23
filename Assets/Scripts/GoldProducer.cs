@@ -4,8 +4,8 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldProductionUnitScript : MonoBehaviour {
-    public GoldProductionUnit goldProductionUnit;
+public class GoldProducer : MonoBehaviour {
+    public GoldProductionData goldProductionData;
     public Text goldAmountText;
     public Text purchaseButtonLabel;
     public Text producedGoldText;
@@ -14,16 +14,16 @@ public class GoldProductionUnitScript : MonoBehaviour {
     float elapsedTime;
     private float timeFraction = 0f;
 
-    public void SetUp(GoldProductionUnit goldProductionUnit) {
-        this.goldProductionUnit = goldProductionUnit;
-        this.gameObject.name = goldProductionUnit.name;
-        this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name} {goldProductionUnit.costs}";
+    public void SetUp(GoldProductionData goldProductionData) {
+        this.goldProductionData = goldProductionData;
+        this.gameObject.name = goldProductionData.name;
+        this.purchaseButtonLabel.text = $"Purchase {goldProductionData.name} {goldProductionData.costs}";
     }
 	
     private int GoldPressAmount {
-        get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
+        get => PlayerPrefs.GetInt(this.goldProductionData.name, 0);
         set {
-            PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
+            PlayerPrefs.SetInt(this.goldProductionData.name, value);
             UpdateGoldPressAmountLabel();
         }
     }
@@ -50,24 +50,19 @@ public class GoldProductionUnitScript : MonoBehaviour {
     {
         
 
-        if (this.elapsedTime >= this.goldProductionUnit.productionTime) 
+        if (this.elapsedTime >= this.goldProductionData.productionTime) 
         {
             ProduceGold();
-            this.elapsedTime -= this.goldProductionUnit.productionTime;
+            this.elapsedTime -= this.goldProductionData.productionTime;
             
-            this.producedGoldText.text = (this.goldProductionUnit.productionAmount * this.GoldPressAmount).ToString();
-            for (int i = 0; i < 500; i++)
-            {
-                var y = this.goldAmountText.transform.position.y;
-                y++;
-            }
+            
         }
     }
     
 
     private void UpdatePurchaseColor()
     {
-        if (gold.GoldAmount < goldProductionUnit.costs)
+        if (gold.GoldAmount < goldProductionData.costs)
         {
             Debug.Log("true");
             this.purchaseButtonLabel.color = Color.red;
@@ -80,20 +75,20 @@ public class GoldProductionUnitScript : MonoBehaviour {
     }
     
     private void UpdateGoldPressAmountLabel() {
-        this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionUnit.name}");
+        this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionData.name}");
     }
 
     private void ProduceGold() {
         var gold = FindObjectOfType<Gold>();
-        gold.GoldAmount += this.goldProductionUnit.productionAmount * this.GoldPressAmount;
+        gold.GoldAmount += this.goldProductionData.productionAmount * this.GoldPressAmount;
     }
 
     public void BuyGoldPress() {
         var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount >= this.goldProductionUnit.costs) 
+        if (gold.GoldAmount >= this.goldProductionData.costs) 
         {
             this.GoldPressAmount++;
-            gold.GoldAmount -= this.goldProductionUnit.costs;
+            gold.GoldAmount -= this.goldProductionData.costs;
         }
     }
 }

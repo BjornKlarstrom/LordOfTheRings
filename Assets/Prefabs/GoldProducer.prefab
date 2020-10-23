@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5180716211921746248}
   - component: {fileID: 4310924990199828131}
   m_Layer: 0
-  m_Name: GoldProductionUnit
+  m_Name: GoldProducer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfce2db8766d447b8462311e875135ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProductionUnit:
-    name: GoldProductionUnitScript
+  goldProductionData:
+    name: GoldProducer
     productionAmount: 1
     costs: 100
     productionTime: 1

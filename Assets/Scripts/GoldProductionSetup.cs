@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoldProductionUnits : MonoBehaviour {
+public class GoldProductionSetup : MonoBehaviour {
 
-    public GoldProductionUnit[] goldProductionUnits;
+    public GoldProductionData[] goldProductionUnits;
     public Transform goldProductionUnitParent;
     public GameObject goldProductionUnitPrefab;
 
@@ -11,7 +11,7 @@ public class GoldProductionUnits : MonoBehaviour {
     {
         foreach (var unit in this.goldProductionUnits) {
             var instance = Instantiate(this.goldProductionUnitPrefab, this.goldProductionUnitParent);
-            instance.GetComponent<GoldProductionUnitScript>().SetUp(unit);
+            instance.GetComponent<GoldProducer>().SetUp(unit);
         }
     }
 }
