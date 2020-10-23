@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Gold : MonoBehaviour {
 	public int goldAmountPerClick = 5;
+	public Text goldAmountTextMove;
 	public Text goldAmountText;
 	private MoveWithFade fader;
 
@@ -22,8 +23,8 @@ public class Gold : MonoBehaviour {
 
 	private void UpdateGoldAmountLabel() {
 		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
+		this.goldAmountTextMove.text = this.GoldAmount.ToString("0 Gold");
 		StartCoroutine(fader.FadeOutAndMove(fader.fadeDuration, fader.moveDuration));
-		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
 	}
 
 	private void Update() {
