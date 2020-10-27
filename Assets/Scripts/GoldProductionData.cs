@@ -1,7 +1,12 @@
-﻿[System.Serializable]
-public class GoldProductionData {
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class GoldProductionData
+{
     public string name = "GoldProducer";
-    public int productionAmount = 1;
-    public int costs = 100;
+    public float productionAmount = 1;
+    public float basicCost = 100;
+    public float upgradeCost = 50;
     public float productionTime = 1f;
 }
