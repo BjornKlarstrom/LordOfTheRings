@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-[System.Serializable]
-public class GoldProductionData
+namespace IdleClicker
 {
-    public string name = "GoldProducer";
-    public float productionAmount = 1;
-    public float basicCost = 100;
-    public float upgradeCost = 50;
-    public float productionTime = 1f;
+    [CreateAssetMenu]
+    public class GoldProductionData : ScriptableObject
+    {
+        public new string name = "GoldProducer";
+        public float productionAmount = 1;
+        public float basicCost = 100;
+        public float upgradeCost = 50;
+        public float productionTime = 1f;
+    }
 }

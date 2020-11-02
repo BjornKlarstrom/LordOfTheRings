@@ -1,34 +1,32 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Gold : MonoBehaviour
+namespace IdleClicker
 {
-    public float goldPerClick = 5.0f;
-    public Text goldAmountText;
+    public class Gold : MonoBehaviour {
+        public float goldPerClick = 5.0f;
+        public Text goldAmountText;
+        private const string goldPlayerPrefsKey = "Gold";
 
-    public float GoldAmount
-    {
-        get => PlayerPrefs.GetFloat("Gold", 0.0f);
-        set
-        {
-            PlayerPrefs.SetFloat("Gold", value);
+        public float GoldAmount {
+            get => PlayerPrefs.GetFloat(goldPlayerPrefsKey, 0.0f);
+            set
+            {
+                PlayerPrefs.SetFloat(goldPlayerPrefsKey, value);
+                this.goldAmountText.text = this.GoldAmount.ToString("Gold 0.0");
+            }
+        }
+    
+        void UpdateGoldAmountLabel() {
             this.goldAmountText.text = this.GoldAmount.ToString("Gold 0.0");
         }
-    }
-    
-    void UpdateGoldAmountLabel()
-    {
-        this.goldAmountText.text = this.GoldAmount.ToString("Gold 0.0");
-    }
 
-    void Start()
-    {
-        UpdateGoldAmountLabel();
-    }
+        void Start() {
+            UpdateGoldAmountLabel();
+        }
     
-    public void ProduceGold()
-    {
-        this.GoldAmount += this.goldPerClick;
+        public void ProduceGold() {
+            this.GoldAmount += this.goldPerClick;
+        }
     }
 }

@@ -16,11 +16,11 @@ namespace HeroClicker
                 var enemy = FindObjectOfType<Enemy>();
 
                 // Om enemy finns. Skapa en ny comonent target
-                // Sätt target.value till enemy
+                // Sätt target.targetValue till enemy
                 if (enemy != null)
                 {
                     var target = this.gameObject.AddComponent<Target>();
-                    target.value = enemy.gameObject;
+                    target.targetValue = enemy.gameObject;
                 }
             }
         }

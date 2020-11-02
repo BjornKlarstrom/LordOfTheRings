@@ -17,11 +17,11 @@ namespace HeroClicker
                 var hero = FindObjectOfType<Hero>();
                 
                 // Om hero inte är null. Skapa en ny comonent target
-                // Sätt target.value till hero
+                // Sätt target.targetValue till hero
                 if (hero != null)
                 {
                     var target = this.gameObject.AddComponent<Target>();
-                    target.value = hero.gameObject;
+                    target.targetValue = hero.gameObject;
                 }
             }
         }

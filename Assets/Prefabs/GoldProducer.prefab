@@ -388,7 +388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5857476668023544828}
         m_TargetAssemblyTypeName: GoldProducer, Assembly-CSharp
-        m_MethodName: BuyGoldPress
+        m_MethodName: Purchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -479,19 +479,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d67a524d6e74d65870bc63feb91460f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProductionData:
-    name: GoldProducer
-    productionAmount: 1
-    basicCost: 100
-    upgradeCost: 50
-    productionTime: 1
-  buyGoldPressButtonText: {fileID: 4111379797097347095}
+  goldProductionData: {fileID: 0}
+  purchaseButtonText: {fileID: 4111379797097347095}
   goldPressesAmount: {fileID: 4111379796797322102}
-  upgradeLevel: 0
   costUpgradeText: {fileID: 7758856833477857563}
   upgradeLevelText: {fileID: 1316868039221685157}
-  costIncrease: 1.1
-  floatingTextPrefab: {fileID: 4935911187509662031, guid: 0264ab7af29e3544a977c5bd78449fe8, type: 3}
+  upgradeCostIncrease: 1.1
+  upgradeLevelBonus: 0.05
+  upgradeValue: 1
+  floatingTextPrefab: {fileID: 90733403610306256, guid: 0264ab7af29e3544a977c5bd78449fe8, type: 3}
 --- !u!114 &1174222738019696762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,7 +520,7 @@ GameObject:
   - component: {fileID: 4111379796797322101}
   - component: {fileID: 4111379796797322102}
   m_Layer: 0
-  m_Name: GoldpressAmountText
+  m_Name: AmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +599,7 @@ GameObject:
   - component: {fileID: 4111379797097347094}
   - component: {fileID: 4111379797097347095}
   m_Layer: 0
-  m_Name: BuyGoldPressText
+  m_Name: PurchaseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

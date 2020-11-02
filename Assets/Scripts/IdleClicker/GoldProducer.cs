@@ -1,11 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-    public class GoldProducer : MonoBehaviour
-    {
+namespace IdleClicker
+{
+    public class GoldProducer : MonoBehaviour {
         public GoldProductionData goldProductionData;
-        public Text buyGoldPressButtonText;
+        public Text purchaseButtonText;
         public Text goldPressesAmount;
         
         public Text costUpgradeText;
@@ -14,24 +14,22 @@ using UnityEngine.UI;
         public float upgradeLevelBonus = 0.05f;
         public float upgradeValue = 1f;
         
-        private float _timePassed;
+        float _timePassed;
 
-        private Gold gold;
-        public GameObject floatingTextPrefab;
-
-        public void SetUp(GoldProductionData data)
-        {
-            this.goldProductionData = data;
-            this.gameObject.name = data.name;
-            this.buyGoldPressButtonText.text = $"{data.name}, ${data.basicCost}";
-            this.costUpgradeText.text = $"Upgrade ${data.upgradeCost}";
+        Gold gold;
+        public Text floatingTextPrefab;
+        
+        float Amount {
+            get => PlayerPrefs.GetFloat(this.goldProductionData.name, 0);
+            set {
+                PlayerPrefs.SetFloat(this.goldProductionData.name, value);
+                UpdateInfoTexts();
+            }
         }
-
-        public float UpgradeLevel
-        {
+        
+        float UpgradeLevel {
             get => PlayerPrefs.GetFloat($"{this.goldProductionData.name}UpgradeLevel", 0);
-            set
-            {
+            set {
                 PlayerPrefs.SetFloat($"{this.goldProductionData.name}UpgradeLevel", value);
                 this.costUpgradeText.text = 
                     this.goldProductionData.upgradeCost.ToString($"Upgrade: ${this.goldProductionData.upgradeCost}");
@@ -40,99 +38,42 @@ using UnityEngine.UI;
             }
         }
 
-        public float GoldPressesAmount
-        {
-            get => PlayerPrefs.GetFloat(this.goldProductionData.name, 0);
-            set
-            {
-                PlayerPrefs.SetFloat(this.goldProductionData.name, value);
-                UpdateInfoTexts();
-            }
+        public void SetUp(GoldProductionData data) {
+            this.goldProductionData = data;
+            this.gameObject.name = data.name;
+            this.purchaseButtonText.text = $"{data.name}, ${data.basicCost}";
+            this.costUpgradeText.text = $"Upgrade ${data.upgradeCost}";
         }
 
-        private void Awake()
-        {
-            gold = FindObjectOfType<Gold>();
-        }
-
-        private void Start()
-        {
-            UpdateInfoTexts();
-        }
-
-        private void Update()
-        {
-            Timer();
-            ProductionReadyCheck();
-            UpdateCostTextColor();
-        }
-        
-        private void Timer()
-        {
-            this._timePassed += Time.deltaTime;
-        }
-        
-        private void ProductionReadyCheck()
-        {
-            if (this._timePassed < this.goldProductionData.productionTime) return;
-            ProduceGold();
-            this._timePassed -= this.goldProductionData.productionTime;
-        }
-        
-        void UpdateCostTextColor()
-        {
-            if (this.goldProductionData.basicCost > gold.GoldAmount)
-            {
-                this.buyGoldPressButtonText.color = Color.red;
-            }
-            else
-            {
-                this.buyGoldPressButtonText.color = Color.green;
-            }
-        }
-
-        void UpdateInfoTexts()
-        {
-            this.goldPressesAmount.text = 
-                this.GoldPressesAmount.ToString($"0 {this.goldProductionData.name}");
-
-            this.upgradeLevelText.text =
-                this.UpgradeLevel.ToString($"Level {this.UpgradeLevel}");
-        }
-        
-
-        public void ProduceGold()
-        {
+        public void ProduceGold() {
             gold.GoldAmount += this.upgradeValue * 
                                this.goldProductionData.productionAmount *
-                               this.GoldPressesAmount;
+                               this.Amount;
                                
             
             //Trigger Text Animation
-            if(this.GoldPressesAmount < 1) return;
+            if(this.Amount < 1) return;
             var instance = Instantiate(floatingTextPrefab, this.transform);
-            instance.GetComponent<Text>().text =
+            instance.text =
                 (this.upgradeValue * 
                  this.goldProductionData.productionAmount * 
-                 this.GoldPressesAmount).ToString();
+                 this.Amount).ToString();
         }
         
 
-        public void BuyGoldPress()
-        {
+        public void Purchase() {
             if (gold.GoldAmount < this.goldProductionData.basicCost) return;
-            this.GoldPressesAmount++;
+            this.Amount++;
             gold.GoldAmount -= this.goldProductionData.basicCost;
             
             // Increase basicCost with 10%
             this.goldProductionData.basicCost = 
-                 this.goldProductionData.basicCost * this.upgradeCostIncrease;
+                this.goldProductionData.basicCost * this.upgradeCostIncrease;
             this.SetUp(this.goldProductionData);
         }
 
-        public void BuyUpgrade()
-        {
-            if (gold.GoldAmount < this.goldProductionData.upgradeCost || GoldPressesAmount == 0) return;
+        public void BuyUpgrade() {
+            if (gold.GoldAmount < this.goldProductionData.upgradeCost || Amount == 0) return;
             this.UpgradeLevel++;
             this.upgradeValue = this.upgradeValue + this.upgradeLevelBonus ;
             Debug.Log(upgradeValue);
@@ -143,4 +84,46 @@ using UnityEngine.UI;
                 (int) (this.goldProductionData.upgradeCost * this.upgradeCostIncrease);
             this.SetUp(this.goldProductionData);
         }
+        
+        
+        void Start() {
+            gold = FindObjectOfType<Gold>();
+            UpdateInfoTexts();
+        }
+
+        void Update() {
+            Timer();
+            ProductionReadyCheck();
+            UpdateCostTextColor();
+        }
+
+        void Timer() {
+            this._timePassed += Time.deltaTime;
+        }
+        
+        void ProductionReadyCheck() {
+            if (this._timePassed < this.goldProductionData.productionTime) return;
+            ProduceGold();
+            this._timePassed -= this.goldProductionData.productionTime;
+        }
+        
+        void UpdateCostTextColor() {
+            if (this.goldProductionData.basicCost > gold.GoldAmount)
+            {
+                this.purchaseButtonText.color = Color.red;
+            }
+            else
+            {
+                this.purchaseButtonText.color = Color.green;
+            }
+        }
+
+        void UpdateInfoTexts() {
+            this.goldPressesAmount.text = 
+                this.Amount.ToString($"0 {this.goldProductionData.name}");
+
+            this.upgradeLevelText.text =
+                this.UpgradeLevel.ToString($"Level {this.UpgradeLevel}");
+        }
     }
+}

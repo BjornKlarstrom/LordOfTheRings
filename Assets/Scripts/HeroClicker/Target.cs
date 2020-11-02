@@ -6,16 +6,16 @@ namespace HeroClicker
     // Component with a target gameobject
     public class Target : MonoBehaviour
     {
-        // Bool Property to check if target value exists.
-        public bool TargetExists => this.value != null;
+        // Bool Property to check if target targetValue exists.
+        public bool TargetExists => this.targetValue != null;
 
         // Skapar en publik GameObject som kan sättas utifrån 
-        public GameObject value;
+        public GameObject targetValue;
 
-        // Om det inte finns nåt target.value. Förstör Target
+        // Om det inte finns nåt target.targetValue. Förstör Target
         private void Update()
         {
-            if (!this.value)
+            if (!this.targetValue)
             {
                 Destroy(this);
             }
