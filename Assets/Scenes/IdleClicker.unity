@@ -338,33 +338,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productionUnits:
-  - name: Simple Press
-    productionAmount: 1
-    basicCost: 100
-    upgradeCost: 50
-    productionTime: 1
-  - name: Standard Press
-    productionAmount: 5
-    basicCost: 300
-    upgradeCost: 150
-    productionTime: 2
-  - name: Modern Press
-    productionAmount: 20
-    basicCost: 375
-    upgradeCost: 250
-    productionTime: 3
-  - name: Diamond  Press
-    productionAmount: 100
-    basicCost: 750
-    upgradeCost: 350
-    productionTime: 3
-  - name: Galaxy  Press
-    productionAmount: 1
-    basicCost: 1e+9
-    upgradeCost: 1e+9
-    productionTime: 1
-  transformParent: {fileID: 1000689402}
-  goldProductionUnitPrefab: {fileID: 4111379796499392875, guid: 6b8a2eb87fe0a194dbdac93060037016, type: 3}
+  - {fileID: 11400000, guid: 69f636418c3bf664eb8fe41ca7171701, type: 2}
+  - {fileID: 11400000, guid: 2993aed1c50cf9442a8ebbbe0d26c33e, type: 2}
+  - {fileID: 11400000, guid: 023fd4c632e8af04d8b99cebc30a1697, type: 2}
+  goldProductionUnitPrefab: {fileID: 5857476668023544828, guid: 6b8a2eb87fe0a194dbdac93060037016, type: 3}
 --- !u!114 &1000689404
 MonoBehaviour:
   m_ObjectHideFlags: 0

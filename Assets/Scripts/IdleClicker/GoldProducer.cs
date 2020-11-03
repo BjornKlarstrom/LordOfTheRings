@@ -10,22 +10,21 @@ namespace IdleClicker
         
         public Text costUpgradeText;
         public Text upgradeLevelText;
-        public float upgradeCostIncrease = 1.1f;
-        public float upgradeLevelBonus = 0.05f;
-        public float upgradeValue = 1f;
-        
+
         float _timePassed;
 
         Gold gold;
-        public Text floatingTextPrefab;
+        public ProductionPopUp popUpPrefab;
         
-        float Amount {
-            get => PlayerPrefs.GetFloat(this.goldProductionData.name, 0);
+        int Amount {
+            get => PlayerPrefs.GetInt(this.goldProductionData.name, 0);
             set {
-                PlayerPrefs.SetFloat(this.goldProductionData.name, value);
+                PlayerPrefs.SetInt(this.goldProductionData.name, value);
                 UpdateInfoTexts();
             }
         }
+        
+        bool IsAffordable => FindObjectOfType<Gold>().GoldAmount >= this.goldProductionData.GetActualCost(this.Amount);
         
         float UpgradeLevel {
             get => PlayerPrefs.GetFloat($"{this.goldProductionData.name}UpgradeLevel", 0);
@@ -41,47 +40,42 @@ namespace IdleClicker
         public void SetUp(GoldProductionData data) {
             this.goldProductionData = data;
             this.gameObject.name = data.name;
-            this.purchaseButtonText.text = $"{data.name}, ${data.basicCost}";
+            this.purchaseButtonText.text = $"{data.name}, ${this.goldProductionData.GetActualCost(this.Amount)}";
             this.costUpgradeText.text = $"Upgrade ${data.upgradeCost}";
         }
 
         public void ProduceGold() {
-            gold.GoldAmount += this.upgradeValue * 
-                               this.goldProductionData.productionAmount *
-                               this.Amount;
-                               
+            if(this.Amount == 0) 
+                return;
             
-            //Trigger Text Animation
-            if(this.Amount < 1) return;
-            var instance = Instantiate(floatingTextPrefab, this.transform);
-            instance.text =
-                (this.upgradeValue * 
-                 this.goldProductionData.productionAmount * 
-                 this.Amount).ToString();
+            gold.GoldAmount += this.goldProductionData.upgradeLevel * 
+                               this.goldProductionData.ProductionAmount *
+                               this.Amount;
+            
+            var instance = Instantiate(this.popUpPrefab, this.transform);
+            instance.GetComponent<Text>().text =
+                $"{this.goldProductionData.upgradeLevel * this.goldProductionData.ProductionAmount * this.Amount}";
         }
         
 
         public void Purchase() {
-            if (gold.GoldAmount < this.goldProductionData.basicCost) return;
-            this.Amount++;
-            gold.GoldAmount -= this.goldProductionData.basicCost;
-            
-            // Increase basicCost with 10%
-            this.goldProductionData.basicCost = 
-                this.goldProductionData.basicCost * this.upgradeCostIncrease;
-            this.SetUp(this.goldProductionData);
+            if (this.IsAffordable)
+            {
+                gold.GoldAmount -= this.goldProductionData.GetActualCost(this.Amount);
+                this.Amount += 1;
+                this.purchaseButtonText.text = $"Purchase for {this.goldProductionData.GetActualCost(this.Amount)}";
+            }
         }
 
         public void BuyUpgrade() {
             if (gold.GoldAmount < this.goldProductionData.upgradeCost || Amount == 0) return;
             this.UpgradeLevel++;
-            this.upgradeValue = this.upgradeValue + this.upgradeLevelBonus ;
-            Debug.Log(upgradeValue);
+            this.goldProductionData.upgradeLevel++;
             this.gold.GoldAmount -= this.goldProductionData.upgradeCost;
             
             // Increase basicCost with 10%
             this.goldProductionData.upgradeCost = 
-                (int) (this.goldProductionData.upgradeCost * this.upgradeCostIncrease);
+                (int) (this.goldProductionData.upgradeCost);
             this.SetUp(this.goldProductionData);
         }
         
@@ -108,7 +102,7 @@ namespace IdleClicker
         }
         
         void UpdateCostTextColor() {
-            if (this.goldProductionData.basicCost > gold.GoldAmount)
+            if (this.goldProductionData.GetActualCost(Amount) > gold.GoldAmount)
             {
                 this.purchaseButtonText.color = Color.red;
             }
