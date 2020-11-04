@@ -21,7 +21,7 @@ public class GoldProducer : MonoBehaviour {
 	string UpgradeAmountPlayerPrefKey => $"{this.GoldProductionData.name}_Upgrade";
 
 	int UpgradeAmount {
-		get => PlayerPrefs.GetInt(this.UpgradeAmountPlayerPrefKey, 0);
+		get => PlayerPrefs.GetInt(this.UpgradeAmountPlayerPrefKey, 1);
 		set {
 			PlayerPrefs.SetInt(this.UpgradeAmountPlayerPrefKey, value);
 			UpdateTitleLabel();
