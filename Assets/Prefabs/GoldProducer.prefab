@@ -1,86 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4331563964241339
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3213011396064891783}
-  - component: {fileID: 1356408239831246135}
-  - component: {fileID: 1316868039221685157}
-  m_Layer: 0
-  m_Name: UpgradeLevelText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3213011396064891783
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331563964241339}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6519908167061764935}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207, y: 12.5}
-  m_SizeDelta: {x: 99.99982, y: 24.999992}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1356408239831246135
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331563964241339}
-  m_CullTransparentMesh: 0
---- !u!114 &1316868039221685157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331563964241339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.86046505, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 13
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Level 0
-
-'
 --- !u!1 &2471511830502306973
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +13,7 @@ GameObject:
   - component: {fileID: 853469025335397361}
   - component: {fileID: 2682834099878620933}
   m_Layer: 0
-  m_Name: BuyUpgradeButton
+  m_Name: UpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,14 +31,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8068552140591422901}
-  - {fileID: 3213011396064891783}
   m_Father: {fileID: 4859787598102843844}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 90.61151, y: 99.28961}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -200, y: 0}
+  m_SizeDelta: {x: -200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6917354564111597869
 CanvasRenderer:
@@ -226,7 +144,7 @@ GameObject:
   - component: {fileID: 6263330405831357868}
   - component: {fileID: 7758856833477857563}
   m_Layer: 0
-  m_Name: UpgradeCostText
+  m_Name: LabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,10 +164,10 @@ RectTransform:
   m_Father: {fileID: 6519908167061764935}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207, y: -12.5}
-  m_SizeDelta: {x: 99.999695, y: 25.000008}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6263330405831357868
 CanvasRenderer:
@@ -308,7 +226,7 @@ GameObject:
   - component: {fileID: 4111379796342936707}
   - component: {fileID: 7021732646624728979}
   m_Layer: 0
-  m_Name: BuyGoldPressButton
+  m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,15 +243,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4111379797097347088}
   - {fileID: 4111379796797322103}
   m_Father: {fileID: 4859787598102843844}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4111379796342936705
 CanvasRenderer:
@@ -457,6 +374,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6840113204706051066}
   - {fileID: 4111379796342936716}
   - {fileID: 6519908167061764935}
   m_Father: {fileID: 0}
@@ -479,15 +397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d67a524d6e74d65870bc63feb91460f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProductionData: {fileID: 0}
-  purchaseButtonText: {fileID: 4111379797097347095}
-  goldPressesAmount: {fileID: 4111379796797322102}
-  costUpgradeText: {fileID: 7758856833477857563}
-  upgradeLevelText: {fileID: 1316868039221685157}
-  upgradeCostIncrease: 1.1
-  upgradeLevelBonus: 0.05
-  upgradeValue: 1
-  popUpPrefab: {fileID: 6220333889780580148, guid: 0264ab7af29e3544a977c5bd78449fe8, type: 3}
+  GoldProductionData: {fileID: 0}
+  goldAmountText: {fileID: 2502639770274600802}
+  purchaseButtonLabel: {fileID: 4111379796797322102}
+  upgradeButtonLabel: {fileID: 7758856833477857563}
+  popupPrefab: {fileID: 6220333889780580148, guid: 0264ab7af29e3544a977c5bd78449fe8, type: 3}
+  gold: {fileID: 11400000, guid: 039a733fc7f45bc41bf0bff88da15c18, type: 2}
 --- !u!114 &1174222738019696762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,9 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 300
+  m_MinWidth: -1
   m_MinHeight: 100
-  m_PreferredWidth: 300
+  m_PreferredWidth: -1
   m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -520,7 +435,7 @@ GameObject:
   - component: {fileID: 4111379796797322101}
   - component: {fileID: 4111379796797322102}
   m_Layer: 0
-  m_Name: AmountText
+  m_Name: LabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +453,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4111379796342936716}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -587,7 +502,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0 Goldpresses
---- !u!1 &4111379797097347089
+--- !u!1 &4209309718524008311
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,57 +510,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4111379797097347088}
-  - component: {fileID: 4111379797097347094}
-  - component: {fileID: 4111379797097347095}
+  - component: {fileID: 6840113204706051066}
+  - component: {fileID: 8273931856112211321}
+  - component: {fileID: 2502639770274600802}
   m_Layer: 0
-  m_Name: PurchaseText
+  m_Name: AmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &4111379797097347088
+--- !u!224 &6840113204706051066
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4111379797097347089}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 4209309718524008311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4111379796342936716}
+  m_Father: {fileID: 4859787598102843844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0001373291, y: -25}
-  m_SizeDelta: {x: 300, y: 50.00003}
+  m_AnchoredPosition: {x: 0.0015717, y: -24.645}
+  m_SizeDelta: {x: 299.9972, y: 49.28961}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4111379797097347094
+--- !u!222 &8273931856112211321
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4111379797097347089}
+  m_GameObject: {fileID: 4209309718524008311}
   m_CullTransparentMesh: 0
---- !u!114 &4111379797097347095
+--- !u!114 &2502639770274600802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4111379797097347089}
+  m_GameObject: {fileID: 4209309718524008311}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.135, g: 0.1060274, b: 0.02712329, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -654,15 +569,17 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
+    m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy Gold Press
+  m_Text: 'New Text
+
+'

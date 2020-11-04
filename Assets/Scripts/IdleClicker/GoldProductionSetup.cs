@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace IdleClicker
-{
-    public class GoldProductionSetup : MonoBehaviour
-    {
+public class GoldProductionSetup : MonoBehaviour {
         public GoldProductionData[] productionUnits;
         public GoldProducer goldProductionUnitPrefab;
 
@@ -16,4 +13,4 @@ namespace IdleClicker
             }
         }
     }
-}
+
